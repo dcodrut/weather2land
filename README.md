@@ -2,7 +2,7 @@
 
 This repository accompanies the paper *Understanding the Role of Weather Data for Earth Surface Forecasting using a ConvLSTM-based Model*. 
 
-![](supl/overview_conv_lstm.gif "ConvLSTM Training Procedure")
+![](overview_conv_lstm.gif "ConvLSTM Training Procedure")
 
 ## Structure
 1. `code`: it will include the code used to train the model
