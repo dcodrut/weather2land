@@ -1,0 +1,65 @@
+Seed: 42
+Architecture: "conv_lstm"
+Data:
+  base_dir: "./data/en21ds_full"
+  test_track: "iid"
+  noisy_masked_pixels: False
+  use_meso_static_as_dynamic: False
+  fp16: False
+  val_pct: 0.01
+  val_split_seed: 42
+  train_batch_size: 8
+  val_batch_size: 16
+  test_batch_size: 16
+  train_shuffle: True
+  pin_memory: True
+  num_workers: 24
+
+Task:
+  loss:
+    name: "masked"
+    args: {
+      distance_type: "L1"
+    }
+  context_length: 10
+  target_length: 20
+  n_stochastic_preds: 1
+  optimization:
+    optimizer:
+      - name: 'Adam'
+        args:
+          lr: 0.001
+          betas: [ 0.9, 0.999 ]
+    lr_shedule:
+      - name: 'MultiStepLR'
+        args:
+          milestones: [ 10, 20, 50]
+          gamma: 0.5
+  n_log_batches: 8
+
+Logger:
+  save_dir: "./data/experiments/"
+  name: "conv_lstm"
+
+Trainer:
+  gpus: 4
+  strategy: 'ddp'
+  limit_train_batches: 1.0
+  limit_val_batches: 1.0
+  limit_test_batches: 1.0
+  log_every_n_steps: 10
+  max_epochs: 60
+
+Model:
+  use_clim_vars: True
+  use_dem_as_dynamic: True
+  context_length: 10
+  target_length: 20
+  args:
+    input_size: [ 128, 128 ]
+    hidden_dim: 32
+    num_layers: 3
+    kernel_size: [ 3, 3 ]
+    batch_first: False
+    bias: True
+    use_bn: False
