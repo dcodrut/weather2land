@@ -1,0 +1,30 @@
+name: enpt110py39
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  - cudatoolkit=10.2.89=h8f6ccaa_9
+  - ffmpeg=4.3=hf484d3e_0
+  - numpy=1.21.2=py39h20f2e39_0
+  - numpy-base=1.21.2=py39h79a1101_0
+  - pillow=8.4.0=py39ha612740_0
+  - pip=21.3.1=pyhd8ed1ab_0
+  - python=3.9.7=hf930737_3_cpython
+  - pytorch=1.10.1=py3.9_cuda10.2_cudnn7.6.5_0
+  - torchvision=0.11.2=py39_cu102
+  - pip:
+    - earthnet==0.2.4
+    - matplotlib==3.5.1
+    - nibabel==3.2.1
+    - opencv-python==4.5.5.62
+    - pandas==1.3.5
+    - protobuf==3.19.1
+    - pyproj==3.3.0
+    - pytorch-lightning==1.5.9
+    - scikit-image==0.19.1
+    - seaborn==0.11.2
+    - segmentation-models-pytorch==0.2.1
+    - tensorboard==2.7.0
+    - torchmetrics==0.6.2
+    - tqdm==4.62.3
